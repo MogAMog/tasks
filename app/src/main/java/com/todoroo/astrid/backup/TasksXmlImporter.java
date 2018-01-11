@@ -17,7 +17,6 @@ import com.todoroo.andlib.data.Property.PropertyVisitor;
 import com.todoroo.andlib.sql.Criterion;
 import com.todoroo.andlib.sql.Query;
 import com.todoroo.andlib.utility.DialogUtilities;
-import com.todoroo.astrid.dao.MetadataDao;
 import com.todoroo.astrid.dao.TagDataDao;
 import com.todoroo.astrid.dao.TaskDao;
 import com.todoroo.astrid.dao.UserActivityDao;
@@ -305,10 +304,8 @@ public class TasksXmlImporter {
                         tagDataDao.insert(tagData);
                     }
                 }
-            } else {
-                metadata.setId(Metadata.NO_ID);
-                metadata.setTask(currentTask.getId());
-                metadataDao.persist(metadata);
+            } else if (metadata.getKey().equals("gtasks")) {
+
             }
         }
 

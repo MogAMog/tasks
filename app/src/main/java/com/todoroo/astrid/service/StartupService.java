@@ -14,7 +14,6 @@ import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Multimaps;
 import com.todoroo.astrid.dao.Database;
-import com.todoroo.astrid.dao.MetadataDao;
 import com.todoroo.astrid.dao.TagDataDao;
 import com.todoroo.astrid.data.TagData;
 import com.todoroo.astrid.tags.TagService;
@@ -158,7 +157,7 @@ public class StartupService {
         for (Long key : metadataByTask.keySet()) {
             ImmutableList<Tag> tagData = metadataByTask.get(key);
             for (int i = 1 ; i < tagData.size() ; i++) {
-                metadataDao.delete(tagData.get(i).getId());
+                tagDao.deleteById(tagData.get(i).getId());
             }
         }
     }

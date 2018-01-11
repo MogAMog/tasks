@@ -15,6 +15,7 @@ import com.todoroo.astrid.provider.Astrid2TaskProvider;
 import org.tasks.ErrorReportingSingleThreadExecutor;
 import org.tasks.analytics.Tracker;
 import org.tasks.data.AlarmDao;
+import org.tasks.data.GoogleTaskDao;
 import org.tasks.data.LocationDao;
 import org.tasks.data.TagDao;
 import org.tasks.db.Migrations;
@@ -93,6 +94,11 @@ public class ApplicationModule {
     @Provides
     public StoreObjectDao getStoreObjectDao(Database database) {
         return database.getStoreObjectDao();
+    }
+
+    @Provides
+    public GoogleTaskDao getGoogleTaskDao(Database database) {
+        return database.getGoogleTaskDao();
     }
 
     @Provides

@@ -10,7 +10,6 @@ import android.os.Bundle;
 import com.todoroo.andlib.sql.Criterion;
 import com.todoroo.andlib.sql.Query;
 import com.todoroo.astrid.dao.Database;
-import com.todoroo.astrid.dao.MetadataDao;
 import com.todoroo.astrid.dao.TaskDao;
 import com.todoroo.astrid.data.Task;
 
@@ -76,10 +75,9 @@ public class OldTaskPreferences extends InjectingPreferenceActivity {
                                 .where(Criterion.and(Task.DELETION_DATE.gt(0)));
                         for (Task task : taskDao.toList(query)) {
                             calendarEventProvider.deleteEvent(task);
+                            taskDao.delete(task.getId());
                         }
-                        int result = taskDao.deleteWhere(Task.DELETION_DATE.gt(0));
-                        metadataDao.removeDanglingMetadata();
-                        return result;
+                        return taskDao.deleteWhere(Task.DELETION_DATE.gt(0));
                     }
 
                     @Override

@@ -2,7 +2,6 @@ package com.todoroo.astrid.alarms;
 
 import android.support.test.runner.AndroidJUnit4;
 
-import com.todoroo.astrid.dao.MetadataDao;
 import com.todoroo.astrid.dao.TaskDao;
 import com.todoroo.astrid.data.Metadata;
 import com.todoroo.astrid.data.Task;

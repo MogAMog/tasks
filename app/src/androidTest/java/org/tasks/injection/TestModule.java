@@ -30,7 +30,6 @@ public class TestModule {
     public Database getDatabase() {
         return Room.inMemoryDatabaseBuilder(context, Database.class)
                 .fallbackToDestructiveMigration()
-                .addCallback(Migrations.ON_CREATE)
                 .build();
     }
 
